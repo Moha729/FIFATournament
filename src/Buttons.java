@@ -12,26 +12,26 @@ public class Buttons {
         this.margeBottom = text;
     }
 
-    public String bigButton() {
+    public String bigButton(String text) {
         margeTop = " ------------------------------------------------------------------------------------------------ ";
-        margeCenter = centerString(96, "hello world!");
+        margeCenter = centerString(96, text);
         margeBottom = " ------------------------------------------------------------------------------------------------ ";
         return (margeTop + "\n" + margeCenter + "\n" + margeBottom);
     }
 
-    public String dobbleButton() {
+    public String dobbleButton(String text1, String text2) {
         margeTop = " ----------------------------------------------- ";
-        margeCenter = centerString(47, "hello world!");
-        String margeCenter2 = centerString(47, "hello world!2");
+        margeCenter = centerString(47, text1);
+        String margeCenter2 = centerString(47, text2);
         margeBottom = " ----------------------------------------------- ";
         return (margeTop + margeTop + "\n" + margeCenter + margeCenter2 + "\n" + margeBottom + margeBottom);
 
     }
 
 
-    public String smallButton() {
+    public String smallButton(String text) {
         margeTop = " ----------------------------------------------- ";
-        margeCenter = centerString(47, "hello world!");
+        margeCenter = centerString(47, text);
         margeBottom = " ----------------------------------------------- ";
         return (margeTop + "\n" + margeCenter + "\n" + margeBottom);
 
