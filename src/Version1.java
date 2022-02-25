@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Version1 {//Programmet er færdigt og kan bruges men kræver formattering og massering
 
     public static final String INTROTEXT = "Velkommen til din FIFA22 Tunering";
-    public static final String BOX1_1 = " -----------------------------------------------------------------------------------------------";
-    public static final String BOX1_2 = "|                                                                                               |";
+    public static final String BOX1_1 = " ------------------------------------------------------------------------------------------------";
+    public static final String BOX1_2 = "|                                                                                                |";
     public static final String BOX2_1 = " -----------------------------------------------";
     public static final String BOX2_2 = "|                                               |";
 
@@ -25,7 +25,11 @@ public class Version1 {//Programmet er færdigt og kan bruges men kræver format
 
         //Presentation + First Menu (new or load).
         System.out.printf("%s\n%s\n|\t\t\t\t\t\t\t\t%35s\t\t\t\t\t\t\t\t|\n%s\n%s\n", BOX1_1, BOX1_2, INTROTEXT, BOX1_2, BOX1_1);
-        System.out.printf("%s%s\n|\t\t\t%s\t\t\t||\t\t\t%s\t\t\t|\n%s%s", BOX2_1, BOX2_1, menu1, menu2, BOX2_1, BOX2_1);
+        /*System.out.printf("%s%s\n|\t\t\t%s\t\t\t||\t\t\t%s\t\t\t|\n%s%s", BOX2_1, BOX2_1, menu1, menu2, BOX2_1, BOX2_1);*/
+
+        Buttons buttons = new Buttons("", "", "");
+
+        System.out.println(buttons.dobbleButton(menu1, menu2));
 
         //Constructors
         Scanner console = new Scanner(System.in);
@@ -147,6 +151,7 @@ public class Version1 {//Programmet er færdigt og kan bruges men kræver format
 
 
     }
+
     public static void savePlayed(ArrayList<MatchPlayed> played)throws FileNotFoundException{
         PrintStream output = new PrintStream(new File("Played.txt"));
         for (int i = 0; i < played.size(); i++){
@@ -260,13 +265,9 @@ public class Version1 {//Programmet er færdigt og kan bruges men kræver format
             for (j = y - (y - (i + 1)); j < y; j++) {
                 //System.out.println(players.get(i) + " vs. " + players.get(j));
                 unplayedMatches.add(new Match(players.get(i), players.get(j)));
-
             }
         }
-
-
     }
-
 
     public static void showTable(ArrayList<Player> players) {
 
@@ -291,7 +292,6 @@ public class Version1 {//Programmet er færdigt og kan bruges men kræver format
         System.out.println(BOX1_1);
 
     }
-
 
     public static void newPlayer(Scanner console, ArrayList<Player> players) {
         String newPlayer = "Indtast hold";

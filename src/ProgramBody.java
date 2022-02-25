@@ -50,13 +50,13 @@ public class ProgramBody {
 
 
         //System.out.println("\n"+BOX1_1);
-        System.out.printf("\n%s\n|\t\t\t\t\t\t%10s %3C %3C %4C %3C %3C %5s %3s %3s\t\t\t\t\t\t\t|\n", Main.BOX1_1, team, played, point, won, draw, lost, goalsFor, goalsAgainst, goalsDiffernce);
+        System.out.printf("\n%s\n|\t\t\t\t\t\t%10s %3C %3C %4C %3C %3C %5s %3s %3s\t\t\t\t\t\t\t|\n", Version1.BOX1_1, team, played, point, won, draw, lost, goalsFor, goalsAgainst, goalsDiffernce);
         for (int i = 0; i < players.size(); i++) {
             System.out.printf("|\t\t\t\t\t\t%10s %3d %3d %4d %3d %3d %5d %3d %3d\t\t\t\t\t\t\t|\n", players.get(i).getName(), players.get(i).getM(), players.get(i).getP(),
                     players.get(i).getW(), players.get(i).getD(), players.get(i).getL(), players.get(i).getGf(), players.get(i).getGa(), players.get(i).getGd());
 
         }
-        System.out.println(Main.BOX1_1);
+        System.out.println(Version1.BOX1_1);
 
     }
 
@@ -180,6 +180,7 @@ public class ProgramBody {
     }
 
 
+
     public void createNewTournament() throws FileNotFoundException {
 
         String confirm = ("Er du sikker? Gamle data vil blive tabt - press 1");
@@ -197,7 +198,7 @@ public class ProgramBody {
             newPlayer();
             do {
                 newPlayer();
-                System.out.println(buttons.dobbleButton(Main2.MENU3, Main2.MENU4));
+                System.out.println(buttons.dobbleButton(Main.MENU3, Main.MENU4));
                 //System.out.printf("%s%s\n|\t\t\t%s\t\t\t||\t\t\t%s\t\t|\n%s%s", BOX2_1, BOX2_1, Main2.MENU3, menu4, BOX2_1, BOX2_1);
                 while (!console.hasNextInt() /*|| console.nextInt() !=1 || console.nextInt() !=2*/) {
                     console.next(); //to discard the input
@@ -221,5 +222,96 @@ public class ProgramBody {
         }
     }
 
-    public void loadExistingTournament(){}
+    public static void readNames() throws FileNotFoundException {
+        Scanner fileScan = new Scanner(new File("Table.txt"));
+
+        while (fileScan.hasNextLine()) {
+            String line = fileScan.nextLine();
+
+            Scanner lineScan = new Scanner(line);
+
+            String name = lineScan.next();
+            int matches = lineScan.nextInt();
+            int points = lineScan.nextInt();
+            int wins = lineScan.nextInt();
+            int draws = lineScan.nextInt();
+            int lose = lineScan.nextInt();
+            int goalsFor = lineScan.nextInt();
+            int goalsAgainst = lineScan.nextInt();
+            int goalsDifference = lineScan.nextInt();
+
+            players.add(new Player(name, 0, 0, 0, 0, 0, 0, 0, 0));
+
+        }
+    }
+
+    public static void readPlayedMatches() throws FileNotFoundException {
+        Scanner fileScan = new Scanner(new File("Played.txt"));
+
+        /*
+        den macher navnene med dem i tabelen
+	hvis navn a macther med et navn fra arraylisten
+	så sæt sæt navnet med objectet fra arraylisten
+	indlæs object a mål score
+
+	indlæs object b mål score
+	mach navn b med object fra arraylisten
+	oprette et færdispillet resultat og
+		opdatere objecterne og tabellet
+         */
+        while (fileScan.hasNextLine()) {
+            String line = fileScan.nextLine();
+            Scanner lineScan = new Scanner(line);
+
+            String playerA = lineScan.next();
+            int k = 0;
+            int l = 0;
+            int aScore = 0;
+
+
+            for (int i = 0; i < players.size(); i++){
+                if (players.get(i).getName().equalsIgnoreCase(playerA)){
+                    aScore = lineScan.nextInt();
+                    k = i;
+                    break;
+                }
+            }
+            lineScan.next();
+            int bScore = lineScan.nextInt();
+            String playerB = lineScan.next();
+            for (int j = 0; j < players.size(); j++){
+                if (players.get(j).getName().equalsIgnoreCase(playerB)){
+                    l = j;
+                    break;
+
+                    //selectMatch(unplayedMatches, playedMatches, console, players);
+                    //registrateMatch(p, playedMatches, players);
+                }
+            }
+            //registrateMatch();
+
+            MatchPlayed matchPlayed = new MatchPlayed(players.get(k), players.get(l), aScore, bScore);
+            playedMatches.add(matchPlayed);
+
+        }
+
+
+
+    }
+
+    public void loadExistingTournament() throws FileNotFoundException {
+        //først skal den læse fra filen for at oprette nulstillede objecter af spillerne
+        //og add dem til arraylist
+
+        makeMatches(players, unplayedMatches);
+        readNames();
+        readPlayedMatches();
+        showPlayedMatched(playedMatches);
+        showTable(players);
+        selectMatch(unplayedMatches, playedMatches, console, players);//show matches
+        //makeMatches(players, unplayedMatches);
+
+
+
+    }
 }
