@@ -1,3 +1,5 @@
+package modles;
+
 public class Player {
 
     private String name;

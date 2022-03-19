@@ -1,3 +1,7 @@
+import modles.Match;
+import modles.MatchPlayed;
+import modles.Player;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -123,7 +127,7 @@ public class Version1 {//Programmet er færdigt og kan bruges men kræver format
                 String vs = lineScan2.next();
                 String player2 = lineScan2.next();
 
-                unplayedMatches.add(new Match(new Player(player1), new Player(player2)));
+                unplayedMatches.add(new modles.Match(new modles.Player(player1), new modles.Player(player2)));
 */
             }
 

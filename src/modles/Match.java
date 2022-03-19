@@ -1,3 +1,7 @@
+package modles;
+
+import modles.Player;
+
 public class Match {
 
         private Player player1;

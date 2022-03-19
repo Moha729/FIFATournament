@@ -1,4 +1,9 @@
-public class MatchPlayed extends Match{
+package modles;
+
+import modles.Match;
+import modles.Player;
+
+public class MatchPlayed extends Match {
 
     private int scorePlayer1;
     private int scorePlayer2;
