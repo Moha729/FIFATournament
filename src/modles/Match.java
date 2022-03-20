@@ -14,7 +14,7 @@ public class Match {
 
         public String toString (){
 
-                return String.format("%10s  vs.  %-10s",player1.getName(), player2.getName());
+                return String.format("%10s  vs.  %-10s",getPlayer1().getName(), getPlayer2().getName());
         }
 
         public void setPlayer1(Player player1){

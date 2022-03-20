@@ -113,4 +113,9 @@ public class UITools {
             System.out.print("|");
         }
     }
+
+    public void whiteSpace() {
+        for (int i = 0; i < 6; i++)
+            System.out.println();
+    }
 }

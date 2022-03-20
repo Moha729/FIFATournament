@@ -30,6 +30,10 @@ public class Player {
 
     public void showInTable(){}//do instance methods to translate these data
 
+    public String fullString(){
+        return String.format("%-20s %-3s %-3s %-4s %-3s %-3s %-4s %-3s %-3s",
+                getName(), getM(), getP(), getW(), getD(), getL(), getGf(), getGa(),getGd());
+    }
     @Override
     public String toString() {
         return name ;

@@ -4,9 +4,9 @@ import modles.*;
 
 import java.util.*;
 
-public interface TournamentIF {
+public interface TournamentServiceIF {
 
-    public Tournament createNewTournament();
+    public Tournament createNewTournament(String name);
     public Tournament selectTournament();
     public ArrayList<Tournament> getTournaments();
 }

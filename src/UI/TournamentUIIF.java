@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface TournamentUIIF {
 
-    public Tournament createNewTournament();//create
+    public Tournament registerNewTournament(String text);//create
     public Tournament loadTournament();//load
 
     public ArrayList<Player> populatePlayer();//asks how many player and register them

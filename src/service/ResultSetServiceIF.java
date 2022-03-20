@@ -6,7 +6,7 @@ import java.util.*;
 
 public interface ResultSetServiceIF {
 
-    public ArrayList<Match> makeMatches(ArrayList<Player> playersList);//matchesList
+    public ArrayList<Match> makeMatches(ArrayList<Player> playersList, ArrayList<Match> matchesList);//matchesList
     public ArrayList<MatchPlayed> createArrayListMatchPlayed();//playedMatchesList
     public MatchPlayed registerMatch(Match match);//gets added to playedMatchesList
 
